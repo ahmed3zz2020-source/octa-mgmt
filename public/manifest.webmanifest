@@ -1,0 +1,25 @@
+{
+  "name": "OCTA — تقرير الزوار",
+  "short_name": "OCTA",
+  "description": "تقرير إدارة OCTA: مين دخل الموقع، إمتى، قد إيه قعد، وأرقام استخدام حيّة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#081521",
+  "theme_color": "#081521",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "تحديث دلوقتي", "short_name": "تحديث", "url": "/?action=refresh" },
+    { "name": "الإعدادات", "short_name": "إعدادات", "url": "/?action=settings" }
+  ],
+  "prefer_related_applications": false
+}

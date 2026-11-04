@@ -1,0 +1,10 @@
+# ⛔ أسرار — متنشرش أبداً
+.app-password
+.env
+.env.*
+# Wrangler
+.wrangler/
+node_modules/
+# لقطات محلية
+*.png
+!public/icons/*.png

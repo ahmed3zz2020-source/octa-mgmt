@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OCTA — تقرير الزوار | مين دخل · إمتى · قد إيه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#081521">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OCTA">
+<link rel="icon" href="/icons/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<style>
+:root{
+  --bg:#081521;
+  --bg2:#0a1929;
+  --card:#0e2135;
+  --card2:#122a42;
+  --line:#1d3a58;
+  --line2:#2a5075;
+  --txt:#e8eef5;
+  --dim:#8b9eb0;
+  --dim2:#5f7186;
+  --gold:#d4af37;
+  --gold2:#f4d03f;
+  --teal:#16c79a;
+  --blue:#4a9eff;
+  --red:#ef4444;
+  --orange:#f59e0b;
+  --violet:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:radial-gradient(1200px 700px at 85% -10%,#102a44 0%,transparent 60%),
+             radial-gradient(900px 600px at 0% 0%,#0d2036 0%,transparent 55%),var(--bg);
+  color:var(--txt);
+  font-family:'Cairo','Tajawal',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:14px; line-height:1.75; padding-bottom:60px;
+}
+.wrap{max-width:1500px;margin:0 auto;padding:0 18px}
+
+/* ── الهيدر ── */
+header{
+  background:linear-gradient(135deg,#0d2136 0%,#123049 60%,#0f2942 100%);
+  border-bottom:1px solid var(--line);
+  padding:26px 0 22px; position:relative; overflow:hidden;
+}
+header::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 200px at 85% 0%,rgba(212,175,55,.16),transparent 70%);
+  pointer-events:none;
+}
+.hd{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),#8a6d12);color:#081521;
+  font-weight:900;font-size:19px;box-shadow:0 6px 22px rgba(212,175,55,.28);flex-shrink:0;
+}
+.brand h1{font-size:21px;font-weight:900;letter-spacing:.2px}
+.brand .sub{color:var(--dim);font-size:12.5px;font-weight:600}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;
+  font-size:11.5px;font-weight:800;border:1px solid var(--line2);background:rgba(255,255,255,.04);
+}
+.badge.live{color:var(--teal);border-color:rgba(22,199,154,.4);background:rgba(22,199,154,.08)}
+.badge.off{color:var(--orange);border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+
+/* ── شريط الأدوات ── */
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:14px 0 0;
+}
+.toolbar input,.toolbar select,.toolbar textarea{
+  background:var(--card);border:1px solid var(--line);color:var(--txt);
+  border-radius:10px;padding:9px 12px;font-family:inherit;font-size:13px;outline:none;
+}
+.toolbar input:focus,.toolbar select:focus,.toolbar textarea:focus{border-color:var(--gold)}
+button{
+  background:linear-gradient(135deg,var(--gold),#a5821c);color:#081521;border:0;
+  padding:9px 18px;border-radius:10px;font-family:inherit;font-weight:800;font-size:13px;
+  cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px;
+}
+button:hover{filter:brightness(1.12);transform:translateY(-1px)}
+button.ghost{background:transparent;border:1px solid var(--line2);color:var(--txt)}
+button.ghost:hover{border-color:var(--gold);color:var(--gold)}
+button.sm{padding:6px 12px;font-size:12px}
+
+/* ── الأقسام ── */
+section{margin-top:34px}
+.sec-hd{display:flex;align-items:center;gap:11px;margin-bottom:14px;flex-wrap:wrap}
+.sec-hd h2{font-size:17.5px;font-weight:900;position:relative;padding-right:15px}
+.sec-hd h2::before{
+  content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:5px;height:19px;border-radius:3px;background:linear-gradient(var(--gold),#8a6d12);
+}
+.sec-hd .note{color:var(--dim2);font-size:12px;font-weight:600;margin-inline-start:auto}
+
+/* ── بطاقات KPI ── */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:12px}
+.kpi{
+  background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);
+  border-radius:14px;padding:15px 16px;position:relative;overflow:hidden;
+}
+.kpi::before{content:"";position:absolute;top:0;right:0;width:100%;height:2px;background:var(--gold);opacity:.55}
+.kpi.teal::before{background:var(--teal)} .kpi.blue::before{background:var(--blue)}
+.kpi.red::before{background:var(--red)} .kpi.violet::before{background:var(--violet)}
+.kpi .k{color:var(--dim);font-size:11.5px;font-weight:700;margin-bottom:4px}
+.kpi .v{font-size:27px;font-weight:900;line-height:1.15;letter-spacing:-.5px}
+.kpi .s{color:var(--dim2);font-size:11.5px;font-weight:600;margin-top:2px}
+
+/* ── البطاقات ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{font-size:14.5px;font-weight:800;margin-bottom:12px;color:var(--gold2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2>*,.grid3>*{min-width:0}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* ── الجداول ── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card);max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{
+  background:var(--card2);color:var(--gold2);font-weight:800;font-size:11.5px;
+  padding:11px 10px;text-align:right;white-space:nowrap;position:sticky;top:0;
+  border-bottom:1px solid var(--line2);cursor:pointer;user-select:none;
+}
+thead th:hover{background:#16314c}
+tbody td{padding:10px;border-bottom:1px solid rgba(29,58,88,.5);white-space:nowrap}
+tbody tr:hover{background:rgba(74,158,255,.06)}
+tbody tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;font-weight:700;direction:ltr;unicode-bidi:isolate;text-align:right}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11.5px}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.clickable{cursor:pointer}
+.dim{color:var(--dim2)}
+
+/* شرائح */
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:800;border:1px solid}
+.pill.g{color:var(--teal);border-color:rgba(22,199,154,.4);background:rgba(22,199,154,.1)}
+.pill.y{color:var(--gold2);border-color:rgba(212,175,55,.4);background:rgba(212,175,55,.1)}
+.pill.r{color:#f87171;border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.1)}
+.pill.b{color:var(--blue);border-color:rgba(74,158,255,.4);background:rgba(74,158,255,.1)}
+.pill.v{color:var(--violet);border-color:rgba(167,139,250,.4);background:rgba(167,139,250,.1)}
+.pill.n{color:var(--dim);border-color:var(--line2);background:rgba(255,255,255,.03)}
+
+/* ── الخط الزمني ── */
+.tl{position:relative;padding-right:24px}
+.tl::before{content:"";position:absolute;right:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(138,109,18,.25))}
+.tl-row{position:relative;padding:9px 12px;border-radius:11px;margin-bottom:7px;background:var(--card);border:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tl-row::before{content:"";position:absolute;right:-21px;top:16px;width:11px;height:11px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
+.tl-row.guest::before{background:var(--violet)}
+.tl-row .t{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold2);font-weight:700;min-width:104px}
+.tl-row .nm{font-weight:800;font-size:13px;min-width:118px}
+.tl-row .rest{color:var(--dim);font-size:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* ── الأعمدة ── */
+.bars{display:flex;align-items:flex-end;gap:4px;height:150px;padding-top:8px}
+.bars .b{flex:1;background:linear-gradient(var(--gold),#8a6d12);border-radius:5px 5px 0 0;min-height:3px;position:relative;transition:.15s}
+.bars .b:hover{background:linear-gradient(var(--gold2),var(--gold))}
+.bars .b span{position:absolute;bottom:-19px;right:50%;transform:translateX(50%);font-size:10px;color:var(--dim2)}
+.hours{display:flex;justify-content:space-between;color:var(--dim2);font-size:10.5px;margin-top:22px;font-weight:700}
+
+.hbar{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.hbar .lbl{font-size:12.5px;min-width:140px;font-weight:700}
+.hbar .tr{flex:1;height:16px;background:rgba(255,255,255,.05);border-radius:8px;overflow:hidden}
+.hbar .fl{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:8px}
+.hbar .v{font-size:12px;color:var(--dim);min-width:56px;text-align:left;font-weight:700}
+
+/* ── التنبيهات ── */
+.alert{border-radius:13px;padding:15px 17px;border:1px solid;margin-bottom:12px}
+.alert.crit{background:rgba(239,68,68,.07);border-color:rgba(239,68,68,.35)}
+.alert.warn{background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.32)}
+.alert.ok{background:rgba(22,199,154,.07);border-color:rgba(22,199,154,.3)}
+.alert .h{font-weight:900;font-size:14px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.alert.crit .h{color:#f87171} .alert.warn .h{color:var(--orange)} .alert.ok .h{color:var(--teal)}
+.alert p{color:var(--dim);font-size:12.8px}
+.alert code{background:rgba(0,0,0,.35);padding:2px 6px;border-radius:5px;font-family:ui-monospace,monospace;font-size:11.5px;color:var(--gold2);direction:ltr;display:inline-block}
+
+pre{background:#06111c;border:1px solid var(--line);border-radius:11px;padding:14px;overflow-x:auto;font-family:ui-monospace,monospace;font-size:11.8px;color:#9fd3ff;direction:ltr;text-align:left;line-height:1.6}
+
+/* ── الدرج ── */
+.fun{display:flex;flex-direction:column;gap:7px}
+.fstep{display:flex;align-items:center;gap:12px}
+.fstep .fs{font-size:12.8px;font-weight:700;min-width:210px}
+.fstep .fb{flex:1;height:26px;background:rgba(255,255,255,.05);border-radius:8px;overflow:hidden}
+.fstep .ff{height:100%;background:linear-gradient(90deg,rgba(212,175,55,.85),var(--gold2));border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-left:10px;font-weight:900;font-size:12.5px;color:#081521}
+.fstep .fp{font-size:11.5px;color:var(--dim2);min-width:52px;text-align:left}
+
+/* ── نافذة التفاصيل ── */
+.modal{position:fixed;inset:0;background:rgba(3,10,18,.85);backdrop-filter:blur(5px);display:none;z-index:99;padding:24px;overflow-y:auto}
+.modal.on{display:block}
+.modal-in{max-width:1050px;margin:0 auto;background:var(--bg2);border:1px solid var(--line2);border-radius:16px;padding:22px}
+.modal-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.modal-hd h3{font-size:18px;font-weight:900}
+.x{background:transparent;border:0;color:var(--dim);font-size:24px;cursor:pointer;padding:0 8px;line-height:1}
+.x:hover{color:var(--red)}
+
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin-bottom:16px}
+.mini div{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.mini .k{font-size:11px;color:var(--dim2);font-weight:700}
+.mini .v{font-size:19px;font-weight:900;color:var(--gold2)}
+
+footer{margin-top:44px;padding:20px 0;border-top:1px solid var(--line);color:var(--dim2);font-size:12px;text-align:center}
+.hint{color:var(--dim2);font-size:11.5px;font-weight:600}
+.status{font-size:12px;font-weight:700;padding:5px 11px;border-radius:8px}
+.status.err{background:rgba(239,68,68,.12);color:#f87171}
+.status.ok{background:rgba(22,199,154,.12);color:var(--teal)}
+::-webkit-scrollbar{height:9px;width:9px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line2);border-radius:5px}
+@media print{.toolbar,.no-print{display:none!important}body{background:#fff;color:#111}}
+
+/* ═══ طبقة التطبيق (PWA) ═══ */
+#login{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  background:radial-gradient(900px 600px at 50% -10%,#123049 0%,transparent 60%),rgba(4,10,17,.96);
+  backdrop-filter:blur(8px);padding:22px}
+#login.on{display:grid}
+.login-card{width:100%;max-width:400px;background:linear-gradient(160deg,var(--card2),var(--card));
+  border:1px solid var(--line2);border-radius:20px;padding:32px 28px;text-align:center;
+  box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.login-card .lg{width:62px;height:62px;border-radius:17px;margin:0 auto 16px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),#8a6d12);color:#081521;font-weight:900;font-size:23px;
+  box-shadow:0 8px 26px rgba(212,175,55,.3)}
+.login-card h3{font-size:19px;font-weight:900;margin-bottom:6px}
+.login-card .sb{color:var(--dim);font-size:12.5px;margin-bottom:20px;font-weight:600}
+.login-card input{width:100%;background:var(--bg);border:1px solid var(--line2);color:var(--txt);
+  border-radius:12px;padding:13px 15px;font-family:inherit;font-size:15px;outline:none;text-align:center;
+  letter-spacing:2px;margin-bottom:12px}
+.login-card input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.12)}
+.login-card button{width:100%;padding:13px;font-size:15px}
+.login-card .msg{color:#f87171;font-size:12.5px;font-weight:700;min-height:20px;margin-top:8px}
+.login-card .tip{color:var(--dim2);font-size:11.5px;margin-top:14px;line-height:1.7}
+
+#toasts{position:fixed;bottom:78px;right:18px;z-index:300;display:flex;flex-direction:column;gap:8px;max-width:380px}
+.toast{background:var(--card2);border:1px solid var(--line2);border-radius:12px;padding:11px 15px;
+  font-size:13px;font-weight:700;color:var(--txt);box-shadow:0 12px 34px rgba(0,0,0,.45);
+  animation:tin .25s ease-out}
+.toast.ok{border-color:rgba(22,199,154,.5)} .toast.warn{border-color:rgba(245,158,11,.5)}
+.toast.err{border-color:rgba(239,68,68,.5)}
+.toast.out{opacity:0;transform:translateX(30px);transition:.35s}
+@keyframes tin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.modal{position:fixed;inset:0;background:rgba(3,10,18,.84);backdrop-filter:blur(6px);display:none;
+  z-index:150;padding:22px;overflow-y:auto}
+.modal.on{display:grid;place-items:center}
+.modal-in{max-width:640px;width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:18px;padding:24px}
+.set-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;
+  border-bottom:1px solid rgba(29,58,88,.6)}
+.set-row:last-of-type{border-bottom:0}
+.set-row .lb{font-size:13.5px;font-weight:800}
+.set-row .ds{color:var(--dim2);font-size:11.5px;font-weight:600;margin-top:2px}
+.set-row select,.set-row input{background:var(--card);border:1px solid var(--line);color:var(--txt);
+  border-radius:9px;padding:8px 11px;font-family:inherit;font-size:13px;outline:none;max-width:210px}
+.set-row input[type=text]{text-align:center;direction:ltr}
+
+#nav{position:fixed;bottom:0;right:0;left:0;z-index:120;background:rgba(10,25,41,.96);
+  backdrop-filter:blur(14px);border-top:1px solid var(--line);display:none}
+#nav .inner{display:flex;max-width:1500px;margin:0 auto;padding:8px 12px;gap:6px;overflow-x:auto}
+#nav button{flex:1;min-width:78px;background:transparent;color:var(--dim);border:1px solid transparent;
+  border-radius:12px;padding:9px 6px;font-size:11.5px;font-weight:800;flex-direction:column;gap:3px}
+#nav button:hover,#nav button.on{color:var(--gold2);border-color:var(--line2);background:rgba(212,175,55,.07)}
+#nav button .ic{font-size:17px;line-height:1}
+@media(max-width:820px){#nav{display:block}body{padding-bottom:72px}#toasts{bottom:88px}}
+
+.steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:11px 40px 11px 0;margin-bottom:8px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:13px}
+.steps li::before{content:counter(s);position:absolute;right:12px;top:11px;width:21px;height:21px;
+  border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#081521;
+  font-weight:900;font-size:11.5px}
+.steps b{color:var(--gold2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hd">
+      <div class="brand">
+        <div class="logo">O</div>
+        <div>
+          <h1>تقرير الزوار — مين دخل · إمتى · قد إيه</h1>
+          <div class="sub" id="gen">…</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <span class="badge live" id="bSnap"><span class="dot"></span> لقطة محفوظة</span>
+        <span class="badge off" id="bLive">غير متصل</span>
+      </div>
+    </div>
+
+    <div class="toolbar no-print">
+      <button id="refreshBtn">🔄 تحديث دلوقتي</button>
+      <button class="ghost" id="installBtn" style="display:none">📲 تثبيت التطبيق</button>
+      <button class="ghost" id="installHelpBtn">📖 إزاي تثبّته</button>
+      <button class="ghost" id="settingsBtn">⚙️ الإعدادات</button>
+      <button class="ghost" onclick="dlUsers()">CSV · مستخدمين</button>
+      <button class="ghost" onclick="dlTime()">CSV · الخط الزمني</button>
+      <button class="ghost" onclick="window.print()">طباعة</button>
+      <span class="status" id="st"></span>
+    </div>
+    <div class="toolbar no-print" style="padding-top:8px">
+      <span class="hint">⏱ <span id="countdown">—</span></span>
+      <span class="hint">· آخر مزامنة: <span id="lastSync">—</span></span>
+      <span class="hint">· 💡 الداتا بتتحدّث لوحدها — مش محتاج تطلب</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ═══ KPI ═══ -->
+<section style="margin-top:24px">
+  <div class="kpis" id="kpis"></div>
+</section>
+
+<!-- ═══ ١. مين دخل ═══ -->
+<section>
+  <div class="sec-hd">
+    <h2>١. مين دخل — كل مستخدم بالتفصيل</h2>
+    <span class="note">اضغط على أي سطر عشان تفاصيله · اضغط على رأس العمود للترتيب</span>
+  </div>
+  <div class="tbl-wrap">
+    <table id="tUsers">
+      <thead><tr>
+        <th data-s="name">الاسم</th>
+        <th data-s="email">الإيميل</th>
+        <th data-s="created">تاريخ التسجيل</th>
+        <th data-s="hits">الزيارات</th>
+        <th data-s="sessions">الجلسات</th>
+        <th data-s="dwell_last">آخر جلسة</th>
+        <th data-s="dwell_total">إجمالي الوقت</th>
+        <th data-s="span_days">المدى (يوم)</th>
+        <th data-s="login_count">الدخولات</th>
+        <th data-s="n_dev">الأجهزة</th>
+        <th data-s="n_ips">الـIPs</th>
+        <th data-s="newdev">أجهزة جديدة</th>
+        <th data-s="last_seen">آخر ظهور</th>
+        <th data-s="pin">باسورد</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="hint" style="margin-top:8px">
+    «آخر جلسة» = من لحظة الدخول لآخر نشاط مسجّل · «إجمالي الوقت» = مجموع الجلسات (الحدّ الأعلى تقريبيًا)
+  </div>
+</section>
+
+<!-- ═══ ٢. الخط الزمني ═══ -->
+<section>
+  <div class="sec-hd">
+    <h2>٢. الخط الزمني — كل عملية دخول بالتوقيت</h2>
+    <span class="note" id="tlCount"></span>
+  </div>
+  <div class="card no-print" style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <input type="text" id="fUser" placeholder="فلتر بالاسم" style="min-width:150px">
+    <select id="fVia">
+      <option value="">كل طرق الدخول</option>
+      <option value="pin">pin</option>
+      <option value="signup">signup</option>
+      <option value="challenge">challenge</option>
+    </select>
+    <select id="fNew">
+      <option value="">كل الأجهزة</option>
+      <option value="new">أجهزة جديدة بس</option>
+    </select>
+    <button class="ghost sm" onclick="clearF()">مسح الفلاتر</button>
+  </div>
+  <div class="card"><div class="tl" id="tl"></div></div>
+</section>
+
+<!-- ═══ ٣. الأجهزة والـIPs ═══ -->
+<section>
+  <div class="sec-hd"><h2>٣. الأجهزة والـIP — من فين دخل</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>بصمة الجهاز (أول ١٢ حرف من الهاش)</h3>
+      <div class="tbl-wrap" style="border:0">
+        <table><thead><tr><th>البصمة</th><th>المستخدم</th><th>دخولات</th><th>الـIP</th><th>أول/آخر</th></tr></thead>
+        <tbody id="tDev"></tbody></table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>عناوين الـIP</h3>
+      <div class="tbl-wrap" style="border:0">
+        <table><thead><tr><th>العنوان</th><th>المستخدمون</th><th>دخولات</th><th>أجهزة</th></tr></thead>
+        <tbody id="tIp"></tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ٤. السلوك ═══ -->
+<section>
+  <div class="sec-hd"><h2>٤. متى بييجوا — التوزيع بالوقت</h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>ساعات اليوم (القاهرة) — دخولات</h3>
+      <div class="bars" id="hchart"></div>
+      <div class="hours"><span>00</span><span>06</span><span>12</span><span>18</span><span>23</span></div>
+    </div>
+    <div class="card">
+      <h3>عدد الدخولات لكل يوم</h3>
+      <div id="dchart" style="max-height:190px;overflow-y:auto"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ٥. الصفحات ═══ -->
+<section>
+  <div class="sec-hd">
+    <h2>٥. الصفحات — إيه اللي بيتفتح</h2>
+    <span class="note">كل الزوار · page_view</span>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>الصفحات الأكثر زيارة</h3><div id="pchart"></div></div>
+    <div class="card">
+      <h3>أنواع الأحداث</h3>
+      <div id="echart"></div>
+      <div class="alert warn" style="margin-top:14px">
+        <div class="h">⚠ Behavioral events لسه مش متعملة</div>
+        <p>كل الأحداث تقريبًا <code>page_view</code> — صفر أحداث سلوك حقيقي. القائمة البيضاء في الباك لسه ٤ أنواع بس، فـ <code>signup_start</code> و<code>pin_reset</code> بيرجعوا 400 وبيضيعوا.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ٦. القمع ═══ -->
+<section>
+  <div class="sec-hd"><h2>٦. القمع — من الزيارة للولاء</h2></div>
+  <div class="grid2">
+    <div class="card"><div class="fun" id="fun"></div></div>
+    <div class="card">
+      <h3>ملاحظات على القمع</h3>
+      <div id="funnotes"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ٨. السجل الخام ═══ -->
+<section>
+  <div class="sec-hd">
+    <h2>٨. السجل الخام — كل حدث بالتوقيت</h2>
+    <span class="note" id="rawHead">…</span>
+  </div>
+  <div class="card" id="rawBox"></div>
+</section>
+
+<!-- ═══ ٧. الفجوات ═══ -->
+<section>
+  <div class="sec-hd"><h2>٧. الفجوات — إيه اللي ناقص عشان التقرير يبقى كامل</h2></div>
+  <div id="gaps"></div>
+</section>
+
+</div>
+
+<footer>
+  OCTA — تقرير الزوار · مولّد آلياً من بيانات الأدمن الحية · <span id="footSnap"></span>
+</footer>
+
+<!-- نافذة التفاصيل -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeM()">
+  <div class="modal-in">
+    <div class="modal-hd">
+      <h3 id="mTitle">تفاصيل</h3>
+      <button class="x" onclick="closeM()">×</button>
+    </div>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<script>
+const DATA = {"generated":"2026-11-04 05:19 UTC","snapshot":"20261104-050637-fa01","api":"https://octa-prices-production-4ccb.up.railway.app","kpi":{"users":13,"pin_users":11,"events":2640,"events7":425,"logins":59,"login_events":47,"devices":16,"ips":6,"active7":6,"active30":12,"tracked":1201,"untracked":1439,"untracked_pct":54.5,"tracked_pct":45.5,"sessions":25,"guests":2,"pages":[["stocks",424],["screener",291],["filter",271],["markets",259],["dash",190],["radar",166],["arms",158],["engine",156],["money",102],["octasearch",91],["pick",85],["setups",72]],"by_event":[["page_view",2632],["signup",7],["action",1]],"actions":[["test",1],["taqa",1]],"growth":[["2026-10",11],["2026-11",2]]},"users":[{"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","created":"2026-10-20 22:30","hits":695,"first_seen":"2026-10-27 09:21","last_seen":"2026-11-04 00:08","last_seen_ts":1793750880,"session_min_bug":19866,"login_count":32,"logins_kept":20,"sessions":11,"srows":[{"start":"2026-10-27 09:21","start_ts":1793085708,"end":"2026-10-27 12:27","end_ts":1793096860,"min":186,"bound":"upper","long":false,"logins":2,"vias":["challenge","pin"],"dev":["0fce82c1caaa"]},{"start":"2026-10-27 12:27","start_ts":1793096860,"end":"2026-10-27 15:30","end_ts":1793107824,"min":183,"bound":"upper","long":false,"logins":1,"vias":["pin"],"dev":["928d9c7701fc"]},{"start":"2026-10-27 15:30","start_ts":1793107824,"end":"2026-10-29 01:22","end_ts":1793229744,"min":2032,"bound":"upper","long":true,"logins":1,"vias":["pin"],"dev":["928d9c7701fc"]},{"start":"2026-10-29 01:22","start_ts":1793229744,"end":"2026-10-29 02:50","end_ts":1793235035,"min":88,"bound":"upper","long":false,"logins":4,"vias":["challenge","pin"],"dev":["0fce82c1caaa","20ccf4f3cc28","3745af437ad0","6688759922ff"]},{"start":"2026-10-29 02:50","start_ts":1793235035,"end":"2026-10-30 00:09","end_ts":1793311799,"min":1279,"bound":"upper","long":true,"logins":3,"vias":["challenge","pin"],"dev":["0fce82c1caaa","1dc0002d6bcd","71fe15a3ae55"]},{"start":"2026-10-30 00:09","start_ts":1793311799,"end":"2026-10-30 13:24","end_ts":1793359490,"min":795,"bound":"upper","long":true,"logins":2,"vias":["pin"],"dev":["71fe15a3ae55"]},{"start":"2026-10-30 13:24","start_ts":1793359490,"end":"2026-10-31 20:24","end_ts":1793471044,"min":1859,"bound":"upper","long":true,"logins":2,"vias":["pin"],"dev":["71fe15a3ae55"]},{"start":"2026-10-31 20:24","start_ts":1793471044,"end":"2026-11-01 04:14","end_ts":1793499282,"min":471,"bound":"upper","long":true,"logins":1,"vias":["pin"],"dev":["0fce82c1caaa"]},{"start":"2026-11-01 04:14","start_ts":1793499282,"end":"2026-11-01 19:06","end_ts":1793552760,"min":891,"bound":"upper","long":true,"logins":2,"vias":["pin"],"dev":["71fe15a3ae55"]},{"start":"2026-11-01 19:06","start_ts":1793552760,"end":"2026-11-04 01:33","end_ts":1793748836,"min":3268,"bound":"upper","long":true,"logins":1,"vias":["pin"],"dev":["71fe15a3ae55"]},{"start":"2026-11-04 01:33","start_ts":1793748836,"end":"2026-11-04 02:08","end_ts":1793750880,"min":34,"bound":"actual","long":false,"logins":1,"vias":["pin"],"dev":["71fe15a3ae55"]}],"dwell_last":34,"dwell_total":11086,"avg_dwell":1008,"span_days":14.1,"devices":["0fce82c1caaa","1dc0002d6bcd","20ccf4f3cc28","3745af437ad0","6688759922ff","71fe15a3ae55","928d9c7701fc"],"n_dev":7,"ips":["212.102.36.193","212.102.36.194","79.127.178.81","79.127.178.82"],"n_ips":4,"newdev":6,"pin":true,"a7":true,"a30":true,"guest":false,"watch":1,"keys":30,"logins":[{"t":1793085708,"ts":"2026-10-27 09:21","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false},{"t":1793085767,"ts":"2026-10-27 09:22","via":"challenge","dev":"0fce82c1caaa","ip":"79.127.178.81","newdev":true},{"t":1793096860,"ts":"2026-10-27 12:27","via":"pin","dev":"928d9c7701fc","ip":"79.127.178.82","newdev":false},{"t":1793107824,"ts":"2026-10-27 15:30","via":"pin","dev":"928d9c7701fc","ip":"79.127.178.82","newdev":false},{"t":1793229744,"ts":"2026-10-29 01:22","via":"challenge","dev":"6688759922ff","ip":"79.127.178.82","newdev":true},{"t":1793230166,"ts":"2026-10-29 01:29","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.81","newdev":false},{"t":1793230254,"ts":"2026-10-29 01:30","via":"challenge","dev":"20ccf4f3cc28","ip":"79.127.178.81","newdev":true},{"t":1793230932,"ts":"2026-10-29 01:42","via":"challenge","dev":"3745af437ad0","ip":"212.102.36.193","newdev":true},{"t":1793235035,"ts":"2026-10-29 02:50","via":"challenge","dev":"1dc0002d6bcd","ip":"212.102.36.194","newdev":true},{"t":1793235139,"ts":"2026-10-29 02:52","via":"challenge","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":true},{"t":1793236137,"ts":"2026-10-29 03:08","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false},{"t":1793311799,"ts":"2026-10-30 00:09","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false},{"t":1793313078,"ts":"2026-10-30 00:31","via":"pin","dev":"71fe15a3ae55","ip":"212.102.36.193","newdev":false},{"t":1793359490,"ts":"2026-10-30 13:24","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false},{"t":1793359490,"ts":"2026-10-30 13:24","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false},{"t":1793471044,"ts":"2026-10-31 20:24","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false},{"t":1793499282,"ts":"2026-11-01 04:14","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false},{"t":1793499283,"ts":"2026-11-01 04:14","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false},{"t":1793552760,"ts":"2026-11-01 19:06","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false},{"t":1793748836,"ts":"2026-11-04 01:33","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false}]},{"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","created":"2026-10-24 22:54","hits":320,"first_seen":"2026-10-25 00:54","last_seen":"2026-11-04 00:04","last_seen_ts":1793750640,"session_min_bug":14468,"login_count":11,"logins_kept":11,"sessions":6,"srows":[{"start":"2026-10-25 00:54","start_ts":1792882492,"end":"2026-10-25 05:55","end_ts":1792900554,"min":301,"bound":"upper","long":false,"logins":2,"vias":["pin","signup"],"dev":["ff9171535ad6"]},{"start":"2026-10-25 05:55","start_ts":1792900554,"end":"2026-10-26 02:04","end_ts":1792973065,"min":1209,"bound":"upper","long":true,"logins":1,"vias":["pin"],"dev":["ff9171535ad6"]},{"start":"2026-10-26 02:04","start_ts":1792973065,"end":"2026-10-28 00:23","end_ts":1793139803,"min":2779,"bound":"upper","long":true,"logins":3,"vias":["challenge","pin"],"dev":["88aca22cd494"]},{"start":"2026-10-28 00:23","start_ts":1793139803,"end":"2026-10-30 06:52","end_ts":1793335921,"min":3269,"bound":"upper","long":true,"logins":3,"vias":["pin"],"dev":["88aca22cd494"]},{"start":"2026-10-30 06:52","start_ts":1793335921,"end":"2026-11-01 01:26","end_ts":1793489187,"min":2554,"bound":"upper","long":true,"logins":1,"vias":["pin"],"dev":["88aca22cd494"]},{"start":"2026-11-01 01:26","start_ts":1793489187,"end":"2026-11-04 02:04","end_ts":1793750640,"min":4358,"bound":"actual","long":true,"logins":1,"vias":["pin"],"dev":["ff9171535ad6"]}],"dwell_last":4358,"dwell_total":14470,"avg_dwell":2412,"span_days":10.0,"devices":["88aca22cd494","ff9171535ad6"],"n_dev":2,"ips":["79.127.178.81","79.127.178.82"],"n_ips":2,"newdev":2,"pin":true,"a7":true,"a30":true,"guest":false,"watch":0,"keys":27,"logins":[{"t":1792882492,"ts":"2026-10-25 00:54","via":"signup","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":true},{"t":1792882497,"ts":"2026-10-25 00:54","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false},{"t":1792900554,"ts":"2026-10-25 05:55","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false},{"t":1792973065,"ts":"2026-10-26 02:04","via":"challenge","dev":"88aca22cd494","ip":"79.127.178.82","newdev":true},{"t":1792973117,"ts":"2026-10-26 02:05","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false},{"t":1792973118,"ts":"2026-10-26 02:05","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false},{"t":1793335921,"ts":"2026-10-30 06:52","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false},{"t":1793489187,"ts":"2026-11-01 01:26","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false}]},{"name":"Mohmad Ezz","email":"mohmadezz24@gmail.com","uid":"843dbc23b55c0b74192f","created":"2026-10-14 22:28","hits":141,"first_seen":"2026-11-01 02:28","last_seen":"2026-10-23 23:07","last_seen_ts":1792796820,"session_min_bug":12997,"login_count":3,"logins_kept":3,"sessions":1,"srows":[{"start":"2026-11-01 02:28","start_ts":1793492909,"end":"2026-11-01 02:28","end_ts":1793492909,"min":0,"bound":"actual","long":false,"logins":3,"vias":["pin","signup"],"dev":["9a5ceb0589d5"]}],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":9.0,"devices":["9a5ceb0589d5"],"n_dev":1,"ips":["79.127.178.81","79.127.178.82"],"n_ips":2,"newdev":1,"pin":true,"a7":false,"a30":true,"guest":false,"watch":6,"keys":23,"logins":[{"t":1793492909,"ts":"2026-11-01 02:28","via":"signup","dev":"9a5ceb0589d5","ip":"79.127.178.82","newdev":true},{"t":1793492917,"ts":"2026-11-01 02:28","via":"pin","dev":"9a5ceb0589d5","ip":"79.127.178.81","newdev":false},{"t":1793492984,"ts":"2026-11-01 02:29","via":"pin","dev":"9a5ceb0589d5","ip":"79.127.178.81","newdev":false}]},{"name":"Kandil","email":"dr_ahmedkandil85@yahoo.com","uid":"c758d4722c360d66cd6e","created":"2026-11-01 23:01","hits":14,"first_seen":"2026-11-02 01:01","last_seen":"2026-11-02 05:30","last_seen_ts":1793597400,"session_min_bug":388,"login_count":4,"logins_kept":4,"sessions":2,"srows":[{"start":"2026-11-02 01:01","start_ts":1793574088,"end":"2026-11-02 07:18","end_ts":1793596715,"min":377,"bound":"upper","long":true,"logins":3,"vias":["pin","signup"],"dev":["8aed69f1d41b"]},{"start":"2026-11-02 07:18","start_ts":1793596715,"end":"2026-11-02 07:30","end_ts":1793597400,"min":11,"bound":"actual","long":false,"logins":1,"vias":["pin"],"dev":["8aed69f1d41b"]}],"dwell_last":11,"dwell_total":388,"avg_dwell":194,"span_days":0.3,"devices":["8aed69f1d41b"],"n_dev":1,"ips":["79.127.178.81","79.127.178.82"],"n_ips":2,"newdev":1,"pin":true,"a7":true,"a30":true,"guest":false,"watch":0,"keys":22,"logins":[{"t":1793574088,"ts":"2026-11-02 01:01","via":"signup","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":true},{"t":1793574095,"ts":"2026-11-02 01:01","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":false},{"t":1793574727,"ts":"2026-11-02 01:12","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.82","newdev":false},{"t":1793596715,"ts":"2026-11-02 07:18","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":false}]},{"name":"hassn ahmed","email":"hassnahmedmohmed7@gmail.com","uid":"15133d6f012d6341dc16","created":"2026-10-30 06:18","hits":13,"first_seen":"2026-10-30 08:23","last_seen":"2026-10-30 08:17","last_seen_ts":1793348220,"session_min_bug":8,"login_count":2,"logins_kept":2,"sessions":1,"srows":[{"start":"2026-10-30 08:23","start_ts":1793341435,"end":"2026-10-30 10:17","end_ts":1793348220,"min":113,"bound":"actual","long":false,"logins":2,"vias":["pin","signup"],"dev":["4de1d6888ea8"]}],"dwell_last":113,"dwell_total":113,"avg_dwell":113,"span_days":0.1,"devices":["4de1d6888ea8"],"n_dev":1,"ips":["79.127.178.82"],"n_ips":1,"newdev":1,"pin":true,"a7":true,"a30":true,"guest":false,"watch":0,"keys":22,"logins":[{"t":1793341435,"ts":"2026-10-30 08:23","via":"signup","dev":"4de1d6888ea8","ip":"79.127.178.82","newdev":true},{"t":1793341443,"ts":"2026-10-30 08:24","via":"pin","dev":"4de1d6888ea8","ip":"79.127.178.82","newdev":false}]},{"name":"Youssef","email":"youssefmahmoudhi@gmail.com","uid":"1fababe25c5a45343238","created":"2026-10-31 04:58","hits":5,"first_seen":"2026-10-31 06:59","last_seen":"2026-10-31 05:01","last_seen_ts":1793422860,"session_min_bug":1,"login_count":2,"logins_kept":2,"sessions":1,"srows":[{"start":"2026-10-31 06:59","start_ts":1793422742,"end":"2026-10-31 07:01","end_ts":1793422860,"min":2,"bound":"actual","long":false,"logins":2,"vias":["pin","signup"],"dev":["73aa2c79dec6"]}],"dwell_last":2,"dwell_total":2,"avg_dwell":2,"span_days":0.0,"devices":["73aa2c79dec6"],"n_dev":1,"ips":["79.127.178.81","79.127.178.82"],"n_ips":2,"newdev":1,"pin":true,"a7":true,"a30":true,"guest":false,"watch":0,"keys":22,"logins":[{"t":1793422742,"ts":"2026-10-31 06:59","via":"signup","dev":"73aa2c79dec6","ip":"79.127.178.81","newdev":true},{"t":1793422746,"ts":"2026-10-31 06:59","via":"pin","dev":"73aa2c79dec6","ip":"79.127.178.82","newdev":false}]},{"name":"Mohammed Rabea","email":"ragab202021@gmail.com","uid":"925da0d50bfa16082b45","created":"2026-10-15 13:25","hits":4,"first_seen":"2026-10-29 06:11","last_seen":"2026-10-29 04:13","last_seen_ts":1793247180,"session_min_bug":19608,"login_count":1,"logins_kept":1,"sessions":1,"srows":[{"start":"2026-10-29 06:11","start_ts":1793247108,"end":"2026-10-29 06:13","end_ts":1793247180,"min":1,"bound":"actual","long":false,"logins":1,"vias":["pin"],"dev":["88c8b76a81d1"]}],"dwell_last":1,"dwell_total":1,"avg_dwell":1,"span_days":13.6,"devices":["88c8b76a81d1"],"n_dev":1,"ips":["79.127.178.82"],"n_ips":1,"newdev":0,"pin":true,"a7":true,"a30":true,"guest":false,"watch":0,"keys":21,"logins":[{"t":1793247108,"ts":"2026-10-29 06:11","via":"pin","dev":"88c8b76a81d1","ip":"79.127.178.82","newdev":false}]},{"name":"زائر","email":"","uid":"a414eed0aac445f9d8a8","created":"2026-10-24 18:16","hits":4,"first_seen":"—","last_seen":"2026-10-24 18:23","last_seen_ts":1792866180,"session_min_bug":7,"login_count":0,"logins_kept":0,"sessions":0,"srows":[],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":0.0,"devices":[],"n_dev":0,"ips":[],"n_ips":0,"newdev":0,"pin":false,"a7":false,"a30":true,"guest":true,"watch":0,"keys":10,"logins":[]},{"name":"Housam Saleh","email":"var.hos90@gmail.com","uid":"cd5542a0c6fc5654baf6","created":"2026-10-20 08:41","hits":3,"first_seen":"—","last_seen":"2026-10-20 08:46","last_seen_ts":1792485960,"session_min_bug":1,"login_count":0,"logins_kept":0,"sessions":0,"srows":[],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":0.0,"devices":[],"n_dev":0,"ips":[],"n_ips":0,"newdev":0,"pin":true,"a7":false,"a30":true,"guest":false,"watch":0,"keys":17,"logins":[]},{"name":"Mohammed Atef Elsayed Ashour","email":"mohammed.elsayed81@gmail.com","uid":"dc23057488d65f72e3a1","created":"2026-10-26 05:03","hits":1,"first_seen":"2026-10-26 07:03","last_seen":"2026-10-26 05:05","last_seen_ts":1792991100,"session_min_bug":0,"login_count":2,"logins_kept":2,"sessions":1,"srows":[{"start":"2026-10-26 07:03","start_ts":1792991004,"end":"2026-10-26 07:05","end_ts":1792991100,"min":2,"bound":"actual","long":false,"logins":2,"vias":["pin","signup"],"dev":["89fda2ae59e9"]}],"dwell_last":2,"dwell_total":2,"avg_dwell":2,"span_days":0.0,"devices":["89fda2ae59e9"],"n_dev":1,"ips":["152.233.13.165","152.233.13.166"],"n_ips":2,"newdev":1,"pin":true,"a7":false,"a30":true,"guest":false,"watch":0,"keys":22,"logins":[{"t":1792991004,"ts":"2026-10-26 07:03","via":"signup","dev":"89fda2ae59e9","ip":"152.233.13.165","newdev":true},{"t":1792991012,"ts":"2026-10-26 07:03","via":"pin","dev":"89fda2ae59e9","ip":"152.233.13.166","newdev":false}]},{"name":"زائر","email":"","uid":"54b5c1413a5567f05f4b","created":"2026-10-24 15:21","hits":1,"first_seen":"—","last_seen":"2026-10-24 15:21","last_seen_ts":1792855260,"session_min_bug":0,"login_count":0,"logins_kept":0,"sessions":0,"srows":[],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":0.0,"devices":[],"n_dev":0,"ips":[],"n_ips":0,"newdev":0,"pin":false,"a7":false,"a30":true,"guest":true,"watch":0,"keys":8,"logins":[]},{"name":"احمد","email":"ahmedalsery1122@gmail.com","uid":"9cb3960bccdc544332c1","created":"2026-11-02 19:25","hits":0,"first_seen":"2026-11-02 21:25","last_seen":"—","last_seen_ts":0,"session_min_bug":0,"login_count":2,"logins_kept":2,"sessions":1,"srows":[{"start":"2026-11-02 21:25","start_ts":1793647539,"end":"2026-11-02 21:25","end_ts":1793647539,"min":0,"bound":"actual","long":false,"logins":2,"vias":["pin","signup"],"dev":["7b9937257d1d"]}],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":0,"devices":["7b9937257d1d"],"n_dev":1,"ips":["79.127.178.82"],"n_ips":1,"newdev":1,"pin":true,"a7":false,"a30":false,"guest":false,"watch":0,"keys":22,"logins":[{"t":1793647539,"ts":"2026-11-02 21:25","via":"signup","dev":"7b9937257d1d","ip":"79.127.178.82","newdev":true},{"t":1793647551,"ts":"2026-11-02 21:25","via":"pin","dev":"7b9937257d1d","ip":"79.127.178.82","newdev":false}]},{"name":"محمد عبدربه","email":"mohammedabdrabou44@gmail.com","uid":"0243e422a94312441950","created":"2026-10-15 13:32","hits":0,"first_seen":"—","last_seen":"—","last_seen_ts":0,"session_min_bug":0,"login_count":0,"logins_kept":0,"sessions":0,"srows":[],"dwell_last":0,"dwell_total":0,"avg_dwell":0,"span_days":0,"devices":[],"n_dev":0,"ips":[],"n_ips":0,"newdev":0,"pin":true,"a7":false,"a30":false,"guest":false,"watch":0,"keys":17,"logins":[]}],"timeline":[{"t":1793748836,"ts":"2026-11-04 01:33","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793647551,"ts":"2026-11-02 21:25","via":"pin","dev":"7b9937257d1d","ip":"79.127.178.82","newdev":false,"name":"احمد","email":"ahmedalsery1122@gmail.com","uid":"9cb3960bccdc544332c1","guest":false},{"t":1793647539,"ts":"2026-11-02 21:25","via":"signup","dev":"7b9937257d1d","ip":"79.127.178.82","newdev":true,"name":"احمد","email":"ahmedalsery1122@gmail.com","uid":"9cb3960bccdc544332c1","guest":false},{"t":1793596715,"ts":"2026-11-02 07:18","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":false,"name":"Kandil","email":"dr_ahmedkandil85@yahoo.com","uid":"c758d4722c360d66cd6e","guest":false},{"t":1793574727,"ts":"2026-11-02 01:12","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.82","newdev":false,"name":"Kandil","email":"dr_ahmedkandil85@yahoo.com","uid":"c758d4722c360d66cd6e","guest":false},{"t":1793574095,"ts":"2026-11-02 01:01","via":"pin","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":false,"name":"Kandil","email":"dr_ahmedkandil85@yahoo.com","uid":"c758d4722c360d66cd6e","guest":false},{"t":1793574088,"ts":"2026-11-02 01:01","via":"signup","dev":"8aed69f1d41b","ip":"79.127.178.81","newdev":true,"name":"Kandil","email":"dr_ahmedkandil85@yahoo.com","uid":"c758d4722c360d66cd6e","guest":false},{"t":1793552760,"ts":"2026-11-01 19:06","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793499283,"ts":"2026-11-01 04:14","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793499282,"ts":"2026-11-01 04:14","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793492984,"ts":"2026-11-01 02:29","via":"pin","dev":"9a5ceb0589d5","ip":"79.127.178.81","newdev":false,"name":"Mohmad Ezz","email":"mohmadezz24@gmail.com","uid":"843dbc23b55c0b74192f","guest":false},{"t":1793492917,"ts":"2026-11-01 02:28","via":"pin","dev":"9a5ceb0589d5","ip":"79.127.178.81","newdev":false,"name":"Mohmad Ezz","email":"mohmadezz24@gmail.com","uid":"843dbc23b55c0b74192f","guest":false},{"t":1793492909,"ts":"2026-11-01 02:28","via":"signup","dev":"9a5ceb0589d5","ip":"79.127.178.82","newdev":true,"name":"Mohmad Ezz","email":"mohmadezz24@gmail.com","uid":"843dbc23b55c0b74192f","guest":false},{"t":1793489187,"ts":"2026-11-01 01:26","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1793471044,"ts":"2026-10-31 20:24","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793422746,"ts":"2026-10-31 06:59","via":"pin","dev":"73aa2c79dec6","ip":"79.127.178.82","newdev":false,"name":"Youssef","email":"youssefmahmoudhi@gmail.com","uid":"1fababe25c5a45343238","guest":false},{"t":1793422742,"ts":"2026-10-31 06:59","via":"signup","dev":"73aa2c79dec6","ip":"79.127.178.81","newdev":true,"name":"Youssef","email":"youssefmahmoudhi@gmail.com","uid":"1fababe25c5a45343238","guest":false},{"t":1793359490,"ts":"2026-10-30 13:24","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793359490,"ts":"2026-10-30 13:24","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793341443,"ts":"2026-10-30 08:24","via":"pin","dev":"4de1d6888ea8","ip":"79.127.178.82","newdev":false,"name":"hassn ahmed","email":"hassnahmedmohmed7@gmail.com","uid":"15133d6f012d6341dc16","guest":false},{"t":1793341435,"ts":"2026-10-30 08:23","via":"signup","dev":"4de1d6888ea8","ip":"79.127.178.82","newdev":true,"name":"hassn ahmed","email":"hassnahmedmohmed7@gmail.com","uid":"15133d6f012d6341dc16","guest":false},{"t":1793335921,"ts":"2026-10-30 06:52","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1793313078,"ts":"2026-10-30 00:31","via":"pin","dev":"71fe15a3ae55","ip":"212.102.36.193","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793311799,"ts":"2026-10-30 00:09","via":"pin","dev":"71fe15a3ae55","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793247108,"ts":"2026-10-29 06:11","via":"pin","dev":"88c8b76a81d1","ip":"79.127.178.82","newdev":false,"name":"Mohammed Rabea","email":"ragab202021@gmail.com","uid":"925da0d50bfa16082b45","guest":false},{"t":1793236137,"ts":"2026-10-29 03:08","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793235139,"ts":"2026-10-29 02:52","via":"challenge","dev":"71fe15a3ae55","ip":"79.127.178.81","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793235035,"ts":"2026-10-29 02:50","via":"challenge","dev":"1dc0002d6bcd","ip":"212.102.36.194","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793230932,"ts":"2026-10-29 01:42","via":"challenge","dev":"3745af437ad0","ip":"212.102.36.193","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793230254,"ts":"2026-10-29 01:30","via":"challenge","dev":"20ccf4f3cc28","ip":"79.127.178.81","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793230166,"ts":"2026-10-29 01:29","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.81","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793229744,"ts":"2026-10-29 01:22","via":"challenge","dev":"6688759922ff","ip":"79.127.178.82","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1793139803,"ts":"2026-10-28 00:23","via":"pin","dev":"88aca22cd494","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1793107824,"ts":"2026-10-27 15:30","via":"pin","dev":"928d9c7701fc","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793096860,"ts":"2026-10-27 12:27","via":"pin","dev":"928d9c7701fc","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793085767,"ts":"2026-10-27 09:22","via":"challenge","dev":"0fce82c1caaa","ip":"79.127.178.81","newdev":true,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1793085708,"ts":"2026-10-27 09:21","via":"pin","dev":"0fce82c1caaa","ip":"79.127.178.82","newdev":false,"name":"Ahmed","email":"ahmed3zz2020@gmail.com","uid":"881110a67b61a0284863","guest":false},{"t":1792991012,"ts":"2026-10-26 07:03","via":"pin","dev":"89fda2ae59e9","ip":"152.233.13.166","newdev":false,"name":"Mohammed Atef Elsayed Ashour","email":"mohammed.elsayed81@gmail.com","uid":"dc23057488d65f72e3a1","guest":false},{"t":1792991004,"ts":"2026-10-26 07:03","via":"signup","dev":"89fda2ae59e9","ip":"152.233.13.165","newdev":true,"name":"Mohammed Atef Elsayed Ashour","email":"mohammed.elsayed81@gmail.com","uid":"dc23057488d65f72e3a1","guest":false},{"t":1792973118,"ts":"2026-10-26 02:05","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1792973117,"ts":"2026-10-26 02:05","via":"pin","dev":"88aca22cd494","ip":"79.127.178.82","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1792973065,"ts":"2026-10-26 02:04","via":"challenge","dev":"88aca22cd494","ip":"79.127.178.82","newdev":true,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1792900554,"ts":"2026-10-25 05:55","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1792882497,"ts":"2026-10-25 00:54","via":"pin","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":false,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false},{"t":1792882492,"ts":"2026-10-25 00:54","via":"signup","dev":"ff9171535ad6","ip":"79.127.178.81","newdev":true,"name":"هبة الزرقا","email":"hebaelzarka1983@gmail.com","uid":"a3c872ff500231fa8dd1","guest":false}],"devices":[{"dev":"71fe15a3ae55","users":["Ahmed"],"logins":9,"ips":["212.102.36.193","79.127.178.81","79.127.178.82"],"first":"2026-10-29 02:52","last":"2026-11-04 01:33","new":1},{"dev":"88aca22cd494","users":["هبة الزرقا"],"logins":7,"ips":["79.127.178.81","79.127.178.82"],"first":"2026-10-26 02:04","last":"2026-10-30 06:52","new":1},{"dev":"0fce82c1caaa","users":["Ahmed"],"logins":5,"ips":["79.127.178.81","79.127.178.82"],"first":"2026-10-27 09:21","last":"2026-10-31 20:24","new":1},{"dev":"8aed69f1d41b","users":["Kandil"],"logins":4,"ips":["79.127.178.81","79.127.178.82"],"first":"2026-11-02 01:01","last":"2026-11-02 07:18","new":1},{"dev":"ff9171535ad6","users":["هبة الزرقا"],"logins":4,"ips":["79.127.178.81"],"first":"2026-10-25 00:54","last":"2026-11-01 01:26","new":1},{"dev":"9a5ceb0589d5","users":["Mohmad Ezz"],"logins":3,"ips":["79.127.178.81","79.127.178.82"],"first":"2026-11-01 02:28","last":"2026-11-01 02:29","new":1},{"dev":"7b9937257d1d","users":["احمد"],"logins":2,"ips":["79.127.178.82"],"first":"2026-11-02 21:25","last":"2026-11-02 21:25","new":1},{"dev":"73aa2c79dec6","users":["Youssef"],"logins":2,"ips":["79.127.178.81","79.127.178.82"],"first":"2026-10-31 06:59","last":"2026-10-31 06:59","new":1},{"dev":"4de1d6888ea8","users":["hassn ahmed"],"logins":2,"ips":["79.127.178.82"],"first":"2026-10-30 08:23","last":"2026-10-30 08:24","new":1},{"dev":"928d9c7701fc","users":["Ahmed"],"logins":2,"ips":["79.127.178.82"],"first":"2026-10-27 12:27","last":"2026-10-27 15:30","new":0},{"dev":"89fda2ae59e9","users":["Mohammed Atef Elsayed Ashour"],"logins":2,"ips":["152.233.13.165","152.233.13.166"],"first":"2026-10-26 07:03","last":"2026-10-26 07:03","new":1},{"dev":"88c8b76a81d1","users":["Mohammed Rabea"],"logins":1,"ips":["79.127.178.82"],"first":"2026-10-29 06:11","last":"2026-10-29 06:11","new":0},{"dev":"1dc0002d6bcd","users":["Ahmed"],"logins":1,"ips":["212.102.36.194"],"first":"2026-10-29 02:50","last":"2026-10-29 02:50","new":1},{"dev":"3745af437ad0","users":["Ahmed"],"logins":1,"ips":["212.102.36.193"],"first":"2026-10-29 01:42","last":"2026-10-29 01:42","new":1},{"dev":"20ccf4f3cc28","users":["Ahmed"],"logins":1,"ips":["79.127.178.81"],"first":"2026-10-29 01:30","last":"2026-10-29 01:30","new":1},{"dev":"6688759922ff","users":["Ahmed"],"logins":1,"ips":["79.127.178.82"],"first":"2026-10-29 01:22","last":"2026-10-29 01:22","new":1}],"ips":[{"ip":"79.127.178.82","users":["Ahmed","Kandil","Mohammed Rabea","Mohmad Ezz","Youssef","hassn ahmed","احمد","هبة الزرقا"],"logins":22,"devs":11},{"ip":"79.127.178.81","users":["Ahmed","Kandil","Mohmad Ezz","Youssef","هبة الزرقا"],"logins":20,"devs":8},{"ip":"212.102.36.193","users":["Ahmed"],"logins":2,"devs":2},{"ip":"212.102.36.194","users":["Ahmed"],"logins":1,"devs":1},{"ip":"152.233.13.166","users":["Mohammed Atef Elsayed Ashour"],"logins":1,"devs":1},{"ip":"152.233.13.165","users":["Mohammed Atef Elsayed Ashour"],"logins":1,"devs":1}],"hourly":[7,9,8,1,2,1,4,3,2,2,0,0,1,2,0,1,0,0,0,1,1,2,0,0],"daily":[{"d":"2026-10-25","n":3},{"d":"2026-10-26","n":5},{"d":"2026-10-27","n":4},{"d":"2026-10-28","n":3},{"d":"2026-10-29","n":8},{"d":"2026-10-30","n":7},{"d":"2026-10-31","n":3},{"d":"2026-11-01","n":7},{"d":"2026-11-02","n":6},{"d":"2026-11-04","n":1}],"funnel":[{"step":"زيارات مسجّلة (events)","n":2640},{"step":"زيارات منسوبة لمستخدم (uid)","n":1201},{"step":"مستخدمين اتسجلوا","n":13},{"step":"حطوا باسورد","n":11},{"step":"دخول فعلي (login_count>0)","n":9},{"step":"نشط آخر ٧ أيام","n":6}]};
+/* ══ الحالة ══ */
+var D = DATA, sortKey = 'hits', sortDir = -1, sortUsers = null;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hm = m => { m=Math.round(m||0); if(m>=60){const h=Math.floor(m/60); return h+'س '+(m%60)+'د';} return m+'د'; };
+
+/* ══ KPI ══ */
+function kpis(){
+  const k = D.kpi;
+  const box = [
+    {k:'إجمالي المستخدمين', v:k.users, s:(k.guests||0)+' زائر · '+(k.users-(k.guests||0))+' مسجّل', c:''},
+    {k:'مرات الدخول', v:k.login_events, s:'محفوظة · '+(k.login_count||k.logins)+' إجمالي مسجّل', c:'teal'},
+    {k:'الجلسات', v:k.sessions, s:'فجوة > ٤٥ د = جلسة جديدة', c:'blue'},
+    {k:'أجهزة بصمات', v:k.devices, s:k.ips+' عنوان IP', c:'violet'},
+    {k:'أحداث مسجّلة', v:k.events, s:k.events7+' في آخر ٧ أيام', c:''},
+    {k:'زيارات منسوبة لمستخدم', v:k.tracked_pct+'%', s:k.tracked+' من '+k.events, c:'teal'},
+    {k:'نشط آخر ٧ أيام', v:k.active7, s:'من '+k.active30+' نشط ٣٠ يوم', c:'blue'},
+    {k:'حطوا باسورد', v:k.pin_users, s:'من '+k.users, c:''},
+  ];
+  $('#kpis').innerHTML = box.map(b=>
+    `<div class="kpi ${b.c}"><div class="k">${b.k}</div><div class="v">${esc(b.v)}</div><div class="s">${esc(b.s)}</div></div>`
+  ).join('');
+}
+
+/* ══ جدول المستخدمين ══ */
+function renderUsers(){
+  const rows = (sortUsers||D.users).slice();
+  rows.sort((a,b)=>{
+    let x=a[sortKey], y=b[sortKey];
+    if(typeof x==='string') return sortDir*String(x||'').localeCompare(String(y||''),'ar');
+    return sortDir*((x||0)-(y||0));
+  });
+  const tb = $('#tUsers tbody');
+  tb.innerHTML = rows.map(u=>{
+    const guest = u.guest?' <span class="pill v">زائر</span>':'';
+    return `<tr class="clickable" onclick="openUser('${u.uid}')">
+      <td><b>${esc(u.name)}</b>${guest}</td>
+      <td class="mono dim ltr">${esc(u.email||'—')}</td>
+      <td class="mono dim">${esc(u.created)}</td>
+      <td class="num">${u.hits}</td>
+      <td class="num">${u.sessions}</td>
+      <td class="num">${u.dwell_last?hm(u.dwell_last):'<span class="dim">—</span>'}</td>
+      <td class="num">${u.dwell_total?hm(u.dwell_total):'<span class="dim">—</span>'}</td>
+      <td class="num">${u.span_days||'<span class="dim">—</span>'}</td>
+      <td class="num">${u.login_count}</td>
+      <td class="num">${u.n_dev}</td>
+      <td class="num">${u.n_ips}</td>
+      <td>${u.newdev?`<span class="pill y">${u.newdev}</span>`:'<span class="dim">0</span>'}</td>
+      <td class="mono dim">${esc(u.last_seen)}</td>
+      <td>${u.pin?'<span class="pill g">✓</span>':'<span class="pill r">✕</span>'}</td>
+    </tr>`;
+  }).join('');
+  $('#tUsers').querySelectorAll('thead th').forEach(th=>{
+    th.onclick=()=>{const k=th.dataset.s; if(k===sortKey) sortDir*=-1; else {sortKey=k;sortDir=-1;} renderUsers();};
+  });
+}
+
+/* ══ الخط الزمني ══ */
+function renderTL(){
+  const fu=$('#fUser').value.trim().toLowerCase(), fv=$('#fVia').value, fn=$('#fNew').value;
+  const rows = D.timeline.filter(e=>{
+    if(fu && !(e.name||'').toLowerCase().includes(fu) && !(e.email||'').toLowerCase().includes(fu)) return false;
+    if(fv && e.via!==fv) return false;
+    if(fn==='new' && !e.newdev) return false;
+    return true;
+  });
+  $('#tlCount').textContent = rows.length + ' عملية من ' + D.timeline.length;
+  const VC = {pin:'<span class="pill y">pin</span>', signup:'<span class="pill g">signup</span>', challenge:'<span class="pill v">challenge</span>'};
+  $('#tl').innerHTML = rows.length ? rows.map(e=>
+    `<div class="tl-row ${e.guest?'guest':''}">
+      <span class="t">${esc(e.ts)}</span>
+      <span class="nm">${esc(e.name)}</span>
+      <span class="rest">${VC[e.via]||esc(e.via)}
+        <span class="mono dim ltr">dev ${esc(e.dev||'—')}</span>
+        <span class="mono dim ltr">${esc(e.ip||'—')}</span>
+        ${e.newdev?'<span class="pill r">جهاز جديد</span>':''}
+      </span></div>`
+  ).join('') : '<p class="dim">لا نتائج</p>';
+}
+function clearF(){ $('#fUser').value=''; $('#fVia').value=''; $('#fNew').value=''; renderTL(); }
+
+/* ══ الأجهزة والـIPs ══ */
+function renderDev(){
+  $('#tDev').innerHTML = D.devices.map(d=>
+    `<tr><td class="mono ltr">${esc(d.dev)}</td><td>${d.users.map(esc).join('، ')}</td>
+     <td class="num">${d.logins}</td><td class="mono dim ltr">${d.ips.map(esc).join('، ')||'—'}</td>
+     <td class="mono dim">${esc(d.first)}<br>${esc(d.last)}</td></tr>`).join('');
+  $('#tIp').innerHTML = D.ips.map(d=>
+    `<tr><td class="mono ltr">${esc(d.ip)}</td><td>${d.users.map(esc).join('، ')}</td>
+     <td class="num">${d.logins}</td><td class="num">${d.devs}</td></tr>`).join('');
+}
+
+/* ══ السلوك ══ */
+function renderBehavior(){
+  const h = D.hourly, mx = Math.max(1,...h);
+  $('#hchart').innerHTML = h.map((v,i)=>
+    `<div class="b" style="height:${Math.max(3,v/mx*100)}%" title="${i}:00 → ${v}"><span>${v||''}</span></div>`).join('');
+  const d = D.daily||[], dm = Math.max(1,...d.map(x=>x.n));
+  $('#dchart').innerHTML = d.length? d.map(x=>
+    `<div class="hbar"><span class="lbl mono" style="min-width:96px">${esc(x.d)}</span>
+     <span class="tr"><span class="fl" style="width:${x.n/dm*100}%"></span></span>
+     <span class="v">${x.n} دخول</span></div>`).join('') : '<p class="dim">لا بيانات</p>';
+}
+
+/* ══ الصفحات ══ */
+function renderPages(){
+  const p = D.kpi.pages||[], mx = Math.max(1,...p.map(x=>x[1]));
+  $('#pchart').innerHTML = p.map(([n,c])=>
+    `<div class="hbar"><span class="lbl">${esc(n)}</span>
+     <span class="tr"><span class="fl" style="width:${c/mx*100}%"></span></span>
+     <span class="v">${c}</span></div>`).join('');
+  const be = D.kpi.by_event||[], bm = Math.max(1,...be.map(x=>x[1]));
+  $('#echart').innerHTML = be.map(([n,c])=>
+    `<div class="hbar"><span class="lbl mono">${esc(n)}</span>
+     <span class="tr"><span class="fl" style="width:${c/bm*100}%;background:linear-gradient(90deg,var(--teal),#5eead4)"></span></span>
+     <span class="v">${c}</span></div>`).join('');
+}
+
+/* ══ القمع ══ */
+function renderFunnel(){
+  const f = D.funnel, mx = Math.max(1,...f.map(x=>x.n));
+  $('#fun').innerHTML = f.map(x=>
+    `<div class="fstep"><span class="fs">${esc(x.step)}</span>
+     <span class="fb"><span class="ff" style="width:${x.n/mx*100}%">${x.n}</span></span>
+     <span class="fp">${Math.round(x.n/mx*100)}%</span></div>`).join('');
+  const k=D.kpi, notes=[];
+  notes.push(`⛔ <b>${k.untracked} حدث (${k.untracked_pct}%)</b> مالهم uid — أويزمن مايتتبعش في التحليلات.`);
+  notes.push(`✅ <b>${k.tracked} حدث (${k.tracked_pct}%)</b> منسوب لمستخدم — وده اللي اتحسّن مقارنة بـ ٨٢٪ قبل كده.`);
+  notes.push(`📈 <b>نشط ٧ أيام ${k.active7}</b> من <b>${k.active30}</b> نشط ٣٠ يوم = <b>${Math.round(k.active7/Math.max(1,k.active30)*100)}٪</b> بقاء.`);
+  notes.push(`🎯 <b>${k.sessions} جلسة</b> من <b>${k.users} مستخدم</b> = ${(k.sessions/k.users).toFixed(1)} جلسة/مستخدم.`);
+  notes.push(`⚠ متوسّطSession مدّته <b>${hm(k.sessions? Math.round(D.users.reduce((a,u)=>a+u.dwell_total,0)/k.sessions):0)}</b> — وده الحد الأعلى، مش المدة الفعلية.`);
+  $('#funnotes').innerHTML = notes.map(n=>`<p style="margin-bottom:9px;font-size:12.8px;color:var(--dim)">${n}</p>`).join('');
+}
+
+/* ══ الفجوات ══ */
+function renderGaps(){
+  const k=D.kpi;
+  const gaps=[
+    {t:'crit',h:'⛔ السبب الجذري للفجوة اتحدد — والحل سطرين',
+     p:`السبب اتقفل: الكود بيبعت الـuid من <code>window.OCTA_USER_ID</code> — وده المتغيّر بيتحدد <b>مرة واحدة بس</b> جوّه <code>setUser()</code> بعد الدخول بنجاح. أي تحديث للصفحة (refresh) أو فتح صفحة تانية بصفّره من الذاكرة ⇒ كل الأحداث بعد كده بتروح <b>بلا uid</b> وتحتسب زائر مجهول. النتيجة: <b>${k.untracked} حدث (${k.untracked_pct}%)</b> مش منسوبين لمستخدم. الحل مش في الواجهة أصلاً — الكوكي HttpOnly بيوصل للسيرفر مع كل طلب <code>/api/track</code> (نفس الأصل) فالسيرفر يقدر يجيب الـuid بنفسه.`,
+     code:`# assets/js/octa-core.js — سطر واحد: استرجاع الـuid عند فتح أي صفحة
+try { var _u = JSON.parse(localStorage.getItem('octa_user') || 'null');
+      window.OCTA_USER_ID = (_u && _u.id) || ''; } catch (e) {}
+
+# update_prices.py — في /api/track: لو الـbody فاضي، خد الـuid من الجلسة
+uid = str(data.get("uid") or "")[:24]
+if not uid:
+    try:
+        _u = _get_user(_bearer())
+        if _u: uid = str(_u.get("uid") or "")[:24]
+    except Exception: pass`},
+    {t:'crit',h:'⛔ مفيش مسار يقرأ السجل الخام — وده سبب إن التقرير ناقص',
+     p:`السيرفر بيخزّن <code>${k.events}</code> حدث، كل واحد فيهم بالتوقيت والصفحة والمستخدم — بس مفيش أي مسار أدمن يقرأهم. النتيجة: مش قادر أعرف «مين فتح أنهي صفحة إمتى قد إيه» على مستوى كل زيارة ولا أعرف أيا اللي رجع فعلاً. الحل = مسار واحد ~١٥ سطر يردّ بالـevents الخام.`,
+     code:`@app.route("/api/admin/events", methods=["GET"])
+def admin_events():
+    """📜 السجل الخام — مين فتح إيه إمتى (admin فقط)"""
+    want = str(os.environ.get("OCTA_ADMIN_TOKEN", "") or "").strip()
+    got  = str(request.headers.get("X-OCTA-Admin", "") or "").strip()
+    if not want or not got or not hmac.compare_digest(got.encode(), want.encode()):
+        return jsonify({"ok": False, "error": "المسار ده محمي"}), 401
+    with TRACK_LOCK:
+        d = _track_load()
+        ev = d.get("events") or []
+        since = request.args.get("since")
+        if since:
+            s = int(since)
+            ev = [e for e in ev if (e.get("ts") or 0) >= s]
+    return jsonify({"ok": True, "events": ev[-4000:], "n": len(ev)}), 200`},
+    {t:'warn',h:'⚠ السلوك لسه مش متقاس — ٩٩٪ من الأحداث page_view',
+     p:`القائمة البيضاء في <code>update_prices.py:4671</code> لسه <code>("page_view","action","signup","login")</code> بس، بينما الواجهة بتبعت <code>signup_start</code> و<code>pin_reset</code> ⇒ بيرجعوا 400 وبيضيعوا. والنتيجة المسجّلة: <code>action</code> واحد بس (لعبة اختبار «test»). يعني مش عارف مين استخدم الفلتر ولا رادار Smart Money ولا البحث ولا المقارنة.`,
+     code:`# 1) وسّع القائمة البيضاء — سطر واحد
+if event not in ("page_view","action","signup","login","signup_start","pin_reset",
+                 "filter_use","radar_use","money_use","search_use","compare_use"):
+    return jsonify({"ok": False, "error": "event غير معروف"}), 400
+
+# 2) في الواجهة — سطر لكل أداة
+octaTrack('filter_use','filter', label);
+octaTrack('money_use','money', label);
+octaTrack('radar_use','radar', label);`},
+    {t:'warn',h:'⚠ مقياس «مدة الجلسة» في monthly غلط',
+     p:`محسوب كـ <code>round((last-first)/60)</code> — يعني من أول زيارة لآخر زيارة. النتيجة: «محمد ربيع» ٤ زيارات بس و«مدة جلسته» ١٩٦٠٨ دقيقة (١٣ يوم) لأن أول زورة كانت ١٥ أكتوبر وآخر واحدة ٢٩ أكتوبر. المدة الحقيقية في هذا التقرير اتحسبت من سجل الدخول (فجوة > ٤٥ دقيقة = جلسة جديدة).`,
+     code:`# في /api/admin/monthly — استبدل session_min
+# الأخير: اجمع فترات الدخول (كل ٣٠ دقيقة = جلسة) واعرض:
+#   sessions_count · avg_session_min · last_session_min`},
+    {t:'warn',h:'⚠ طلبات دخول مكرّرة من نفس الجهاز في نفس الثانية',
+     p:`لقيت <b>٣ طلبات زائدة</b>: هبة الزرقا ×٣ في ٢٧ أكتوبر ٢٢:٢٣:٢٣ · أحمد ×٢ في ٣٠ أكتوبر ١١:٢٤. السبب غالبًا زر الدخول مربوط مرتين (نموذج + click). بيضخّم <code>login_count</code> ويفسّر جزء من «٣٢ دخول» لـAhmed.`,
+     code:`// في octa-gate.js — تأكد إن المستمع واحد بس
+form.onsubmit = submitLogin;   // مرة واحدة
+btn.onclick = null;            // مفيش معالج تاني`},
+    {t:'ok',h:'✅ البوابة اتنشرت — الفجوة الحرجة اتقفلت',
+     p:`<code>/api/markets</code> و<code>/api/stats</code> بيرجعوا 401 من غير توكن، والملف العام <code>/data/data_markets.js</code> بقى 404، وصفحة الـgate شغالة على الإنتاج. النسبة اللي من غير uid نزلت من ٨٢٪ إلى ${k.untracked_pct}٪ — والباقي سببه سطر واحد ناقص في الواجهة (فوق).`},
+  ];
+  $('#gaps').innerHTML = gaps.map(g=>
+    `<div class="alert ${g.t}">
+      <div class="h">${g.h}</div>
+      <p>${g.p}</p>
+      ${g.code?`<pre>${esc(g.code)}</pre>`:''}
+    </div>`).join('');
+}
+
+/* ══ نافذة التفاصيل ══ */
+function openUser(uid){
+  const u = D.users.find(x=>x.uid===uid); if(!u) return;
+  $('#mTitle').innerHTML = `${esc(u.name)} <span class="mono dim" style="font-size:13px">${esc(u.email||'زائر')}</span>`;
+  const rows = u.srows.length? u.srows.map(s=>
+    `<tr><td class="mono">${esc(s.start)}</td><td class="mono dim">${esc(s.end)}</td>
+     <td class="num">${hm(s.min)}</td><td class="num">${s.logins}</td>
+     <td>${s.vias.map(v=>`<span class="pill n">${esc(v)}</span>`).join(' ')}</td>
+     <td class="mono dim">${s.dev.map(esc).join('، ')}</td>
+     <td>${s.bound==='actual'?'<span class="pill g">مقيسة</span>':'<span class="pill y">حد أعلى</span>'}
+     ${s.long?'<span class="pill b">جلسة مستمرة (الكوكي)</span>':''}</td></tr>`).join('')
+    : `<tr><td colspan="7" class="dim">زيارات بلا تسجيل دخول (زائر أو تصفح قبل البوابة)</td></tr>`;
+  const lg = u.logins.length? u.logins.map(e=>
+    `<tr><td class="mono">${esc(e.ts)}</td><td>${esc(e.via)}</td>
+     <td class="mono dim ltr">${esc(e.dev)}</td><td class="mono dim ltr">${esc(e.ip||'—')}</td>
+     <td>${e.newdev?'<span class="pill r">جديد</span>':'<span class="pill n">معروف</span>'}</td></tr>`).join('')
+    : `<tr><td colspan="5" class="dim">لا دخولات مسجّلة</td></tr>`;
+  $('#mBody').innerHTML = `
+    <div class="mini">
+      <div><div class="k">الزيارات</div><div class="v">${u.hits}</div></div>
+      <div><div class="k">الجلسات</div><div class="v">${u.sessions}</div></div>
+      <div><div class="k">آخر جلسة</div><div class="v">${hm(u.dwell_last)}</div></div>
+      <div><div class="k">متوسط الجلسة</div><div class="v">${hm(u.avg_dwell)}</div></div>
+      <div><div class="k">إجمالي الوقت</div><div class="v">${hm(u.dwell_total)}</div></div>
+      <div><div class="k">الدخولات</div><div class="v">${u.login_count}</div></div>
+      <div><div class="k">الأجهزة</div><div class="v">${u.n_dev}</div></div>
+      <div><div class="k">الـIPs</div><div class="v">${u.n_ips}</div></div>
+    </div>
+    <h3 style="font-size:14px;font-weight:800;margin:16px 0 8px;color:var(--gold2)">الجلسات</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>البداية</th><th>آخر نشاط</th><th>المدة</th><th>دخولات</th><th>الطريقة</th><th>الأجهزة</th><th>الحد</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <h3 style="font-size:14px;font-weight:800;margin:16px 0 8px;color:var(--gold2)">كل عمليات الدخول</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>الوقت</th><th>الطريقة</th><th>الجهاز</th><th>الـIP</th><th>الحالة</th></tr></thead><tbody>${lg}</tbody></table></div>
+    <p class="hint" style="margin-top:10px">التسجيل: ${esc(u.created)} · أول ظهور: ${esc(u.first_seen)} · آخر ظهور: ${esc(u.last_seen)} · باسورد: ${u.pin?'نعم':'لا'} · مفاتيح متابعة: ${u.keys} · متابعة أسعار: ${u.watch}</p>`;
+  $('#modal').classList.add('on');
+}
+function closeM(){ $('#modal').classList.remove('on'); }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeM(); });
+
+/* ══ التحديث الحي ══ */
+async function pull(){
+  if (window.__octaAppPull) return window.__octaAppPull();
+  const tok = $('#tok') ? $('#tok').value.trim() : '';
+  if(!tok){ setSt('لازم توكن الأدمن','err'); return; }
+  setSt('جاري السحب…','');
+  const base = D.api||'https://octa-prices-production-4ccb.up.railway.app';
+  try{
+    const g = async (p) => {
+      const r = await fetch(base+p, {headers:{'X-OCTA-Admin':tok}, cache:'no-store'});
+      if(!r.ok) throw new Error(p+' → HTTP '+r.status);
+      return r.json();
+    };
+    const [monthly, users, logins] = await Promise.all([g('/api/admin/monthly'), g('/api/admin/users'), g('/api/admin/logins')]);
+    D = merge(monthly, users, logins);
+    $('#bLive').className='badge live'; $('#bLive').innerHTML='<span class="dot"></span> متصل بالدير';
+    setSt('تم التحديث · '+new Date().toLocaleTimeString('ar-EG'),'ok');
+    renderAll();
+  }catch(e){
+    setSt('فشل: '+e.message,'err');
+    $('#bLive').className='badge off'; $('#bLive').textContent='غير متصل';
+  }
+}
+function setSt(m,c){ const s=$('#st'); s.textContent=m; s.className='status '+(c||''); }
+
+/* ══ دمج بيانات حية ══ */
+function merge(monthly, usersJ, loginsJ){
+  const mu={}, uu={};
+  (monthly.users||[]).forEach(m=>mu[m.id]=m);
+  (usersJ.users||[]).forEach(u=>uu[u.uid]=u);
+  const an = monthly.analytics||{};
+  const out = JSON.parse(JSON.stringify(D));
+  out.kpi.users = monthly.total; out.kpi.pin_users = monthly.pin_set_n;
+  out.kpi.events = an.events_total; out.kpi.events7 = an.events_7d;
+  out.kpi.active7 = an.active_7d; out.kpi.active30 = an.active_30d;
+  out.kpi.pages = an.top_pages||[]; out.kpi.by_event = an.by_event||[];
+  out.kpi.actions = an.top_actions||[]; out.kpi.growth = an.growth||[];
+  out.snapshot = monthly.snapshot_id;
+  const nu=[];
+  (loginsJ.users||[]).forEach(lg=>{
+    let uid=null;
+    (usersJ.users||[]).forEach(u=>{ if(u.name===lg.name && (u.email||'')===(lg.email||'') && !uid) uid=u.uid; });
+    if(!uid) (usersJ.users||[]).forEach(u=>{ if(u.name===lg.name && !lg.email && !uid) uid=u.uid; });
+    const m=mu[uid]||{}, raw=uu[uid]||{};
+    const logins=(lg.logins||[]).slice().sort((a,b)=>a.t-b.t);
+    const sess=[];
+    logins.forEach(e=>{
+      const lastT = sess.length ? sess[sess.length-1][sess[sess.length-1].length-1].t : null;
+      if(lastT !== null && (e.t - lastT) <= 2700) sess[sess.length-1].push(e);
+      else sess.push([e]);
+    });
+    const ls = m.last_seen && m.last_seen!=='—' ? Math.floor(new Date(m.last_seen.replace(' ','T')+'Z').getTime()/1000)+7200 : 0;
+    const srows = sess.map((cl,i)=>{
+      const start=cl[0].t; const end = (i+1<sess.length)? sess[i+1][0].t : (ls>start?ls:start);
+      return {start:new Date((start+7200)*1000).toISOString().slice(0,16).replace('T',' '),
+              end:new Date((end+7200)*1000).toISOString().slice(0,16).replace('T',' '),
+              end_ts:end, min:Math.round((end-start)/60), bound:(i+1<sess.length?'upper':'actual'),
+              logins:cl.length, vias:[...new Set(cl.map(x=>x.via))], dev:[...new Set(cl.map(x=>x.dev))]};
+    });
+    nu.push({name:lg.name,email:lg.email||'',uid:uid||'',created:m.created_iso||'—',hits:m.hits||0,
+      first_seen:m.first_seen||'—',last_seen:m.last_seen||'—',last_seen_ts:ls,session_min_bug:m.session_min||0,
+      login_count:lg.login_count||0,logins_kept:logins.length,sessions:srows.length,srows,
+      dwell_last:(srows.filter(s=>s.bound==='actual').slice(-1)[0]||{min:0}).min,
+      dwell_total:srows.reduce((a,s)=>a+s.min,0),avg_dwell:srows.length?Math.round(srows.reduce((a,s)=>a+s.min,0)/srows.length):0,
+      span_days:0,devices:[...new Set(logins.map(x=>x.dev))],n_dev:new Set(logins.map(x=>x.dev)).size,
+      ips:[...new Set(logins.map(x=>(x.ip||'').split('|')[0]).filter(Boolean))],
+      n_ips:new Set(logins.map(x=>(x.ip||'').split('|')[0]).filter(Boolean)).size,
+      newdev:logins.filter(x=>x.newdev).length,pin:!!m.pin_set,a7:!!m.active_7d,a30:!!m.active_30d,
+      guest:!lg.email,watch:raw.watch||0,keys:(raw.keys||[]).length,
+      logins:logins.map(e=>({t:e.t,ts:new Date((e.t+7200)*1000).toISOString().slice(0,16).replace('T',' '),via:e.via,dev:e.dev,ip:(e.ip||'').split('|')[0],newdev:!!e.newdev}))});
+  });
+  out.users = nu.sort((a,b)=>b.hits-a.hits);
+  const tl=[]; nu.forEach(u=>u.logins.forEach(e=>tl.push({...e,name:u.name,email:u.email,guest:u.guest})));
+  tl.sort((a,b)=>b.t-a.t); out.timeline=tl;
+  const dm={}; tl.forEach(e=>{ dm[e.dev]=dm[e.dev]||{users:new Set(),logins:0,ips:new Set(),first:1e18,last:0,new:0};
+    dm[e.dev].users.add(e.name); dm[e.dev].logins++; if(e.ip)dm[e.dev].ips.add(e.ip);
+    dm[e.dev].first=Math.min(dm[e.dev].first,e.t); dm[e.dev].last=Math.max(dm[e.dev].last,e.t); if(e.newdev)dm[e.dev].new++; });
+  out.devices = Object.entries(dm).map(([k,v])=>({dev:k,users:[...v.users],logins:v.logins,ips:[...v.ips],
+    first:new Date((v.first+7200)*1000).toISOString().slice(0,16).replace('T',' '),
+    last:new Date((v.last+7200)*1000).toISOString().slice(0,16).replace('T',' '),new:v.new})).sort((a,b)=>b.logins-a.logins);
+  const im={}; tl.forEach(e=>{ if(!e.ip)return; im[e.ip]=im[e.ip]||{users:new Set(),logins:0,devs:new Set()};
+    im[e.ip].users.add(e.name); im[e.ip].logins++; im[e.ip].devs.add(e.dev); });
+  out.ips = Object.entries(im).map(([ip,v])=>({ip,users:[...v.users],logins:v.logins,devs:v.devs.size})).sort((a,b)=>b.logins-a.logins);
+  const hh=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  tl.forEach(e=>hh[(e.t+7200)%86400/3600|0]++); out.hourly=hh;
+  const dd={}; tl.forEach(e=>{ const d=new Date((e.t+7200)*1000).toISOString().slice(0,10); dd[d]=(dd[d]||0)+1; });
+  out.daily = Object.entries(dd).sort().map(([d,n])=>({d,n}));
+  out.kpi.login_events = tl.length; out.kpi.devices = out.devices.length; out.kpi.ips = out.ips.length;
+  out.kpi.sessions = nu.reduce((a,u)=>a+u.sessions,0);
+  out.kpi.tracked = nu.reduce((a,u)=>a+u.hits,0);
+  out.kpi.untracked = Math.max(0,(an.events_total||0)-out.kpi.tracked);
+  out.kpi.tracked_pct = Math.round(out.kpi.tracked*100/Math.max(1,an.events_total||1)*10)/10;
+  out.kpi.untracked_pct = Math.round(out.kpi.untracked*100/Math.max(1,an.events_total||1)*10)/10;
+  out.funnel = [{step:'زيارات مسجّلة (events)',n:an.events_total||0},
+    {step:'زيارات منسوبة لمستخدم (uid)',n:out.kpi.tracked},
+    {step:'مستخدمين اتسجلوا',n:monthly.total},
+    {step:'حطوا باسورد',n:monthly.pin_set_n},
+    {step:'دخول فعلي',n:nu.filter(u=>u.login_count>0).length},
+    {step:'نشط آخر ٧ أيام',n:an.active_7d}];
+  return out;
+}
+
+/* ══ لصق JSON ══ */
+function pasteFile(inp){ const f=inp.files[0]; if(!f)return; const r=new FileReader();
+  r.onload=()=>{ $('#pasteBox').value=r.result; pasteGo(); }; r.readAsText(f); }
+function pasteGo(){
+  try{ const o=JSON.parse($('#pasteBox').value);
+    if(o.users && o.timeline){ D=o; renderAll(); setSt('تم تطبيق JSON','ok'); }
+    else setSt('الشكل مش صحيح — لازم users و timeline','err');
+  }catch(e){ setSt('JSON غير صالح: '+e.message,'err'); }
+}
+
+/* ══ CSV ══ */
+function csv(name, head, rows){
+  const q = v => '"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+  const txt = '\ufeff'+[head.map(q).join(',')].concat(rows.map(r=>r.map(q).join(','))).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv;charset=utf-8'}));
+  a.download=name; a.click();
+}
+function dlUsers(){
+  csv('octa-users.csv',['name','email','created','hits','sessions','dwell_last_min','dwell_total_min','span_days','login_count','devices','ips','newdev','last_seen','pin'],
+    D.users.map(u=>[u.name,u.email,u.created,u.hits,u.sessions,u.dwell_last,u.dwell_total,u.span_days,u.login_count,u.n_dev,u.n_ips,u.newdev,u.last_seen,u.pin?'نعم':'لا']));
+}
+function dlTime(){
+  csv('octa-timeline.csv',['time','name','email','method','device','ip','new_device'],
+    D.timeline.map(e=>[e.ts,e.name,e.email,e.via,e.dev,e.ip,e.newdev?'نعم':'لا']));
+}
+
+
+/* ══ السجل الخام ══ */
+function renderRaw(){
+  const box = document.getElementById('rawBox');
+  if (!box) return;
+  const ev = (D.raw_events || []);
+  const head = document.getElementById('rawHead');
+  if (!ev.length){
+    if (head) head.innerHTML = '<span class="pill y">لسه مش مفعّل</span>';
+    box.innerHTML = '<p class="dim">المسار <code>/api/admin/events</code> لسه مش موجود على السيرفر. '
+      + 'أول ما شات التطوير ينفّذه، التطبيق هيعرض السجل الخام هنا <b>تلقائياً</b> من غير أي تعديل — '
+      + 'دلوقتي التقرير يقدر يقول «مين دخل إمتى»، وجي بتاع السجل الخام يقول «فتح أنهي صفحة قد إيه».</p>';
+    return;
+  }
+  if (head) head.innerHTML = '<span class="pill g">' + (D.raw_n || ev.length) + ' حدث خام</span>';
+  const rows = ev.slice().reverse().slice(0, 400).map(function (e) {
+    const t = new Date((e.ts || 0) * 1000);
+    const ts = t.toLocaleString('ar-EG', { hour12: false });
+    const who = (D.users || []).filter(u => u.uid === e.u)[0];
+    const evn = e.ev || e.event || '';
+    const pg = e.p || e.page || '';
+    const lb = e.l || e.label || '';
+    return '<tr><td class="mono dim">' + esc(ts) + '</td>'
+      + '<td>' + esc(who ? who.name : '—') + '</td>'
+      + '<td><span class="pill n">' + esc(evn) + '</span></td>'
+      + '<td class="mono">' + esc(pg) + '</td>'
+      + '<td class="mono dim">' + esc(lb) + '</td></tr>';
+  }).join('');
+  box.innerHTML = '<div class="tbl-wrap"><table><thead><tr><th>الوقت</th><th>المستخدم</th><th>الحدث</th>'
+    + '<th>الصفحة</th><th>التفاصيل</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
+/* ══ تشغيل ══ */
+function renderAll(){ kpis(); renderUsers(); renderTL(); renderDev(); renderBehavior(); renderPages(); renderFunnel(); renderGaps(); renderRaw(); }
+document.addEventListener('DOMContentLoaded', ()=>{
+  $('#gen').textContent = 'توليد: ' + D.generated + ' · لقطة: ' + (D.snapshot||'—');
+  $('#footSnap').textContent = 'لقطة ' + (D.snapshot||'—');
+  ['fUser','fVia','fNew'].forEach(id=>{ const el=document.getElementById(id); el.addEventListener('input',renderTL); el.addEventListener('change',renderTL); });
+  renderAll();
+});
+</script>
+
+<!-- ═══ شاشة الدخول ═══ -->
+<div id="login">
+  <div class="login-card">
+    <div class="lg">O</div>
+    <h3>تقرير زوار OCTA</h3>
+    <div class="sb">دخول عشان تشوف البيانات الحية</div>
+    <form id="loginForm" autocomplete="off">
+      <input type="password" id="pw" placeholder="كلمة المرور" autocomplete="current-password">
+      <button type="submit" id="loginBtn">دخول</button>
+    </form>
+    <div class="msg" id="loginMsg"></div>
+    <div class="tip">التطبيق بيفتح من غير نت برضه، وبيلفظ آخر نسخة من الداتا على جهازك.</div>
+  </div>
+</div>
+
+<!-- ═══ الإعدادات ═══ -->
+<div class="modal" id="settings" onclick="if(event.target===this)document.getElementById('settings').classList.remove('on')">
+  <div class="modal-in">
+    <div class="modal-hd">
+      <h3>⚙️ الإعدادات</h3>
+      <button class="x" id="closeSettings">×</button>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">التحديث التلقائي</div><div class="ds">كل قد إيه يعيد سحب الداتا من السيرفر</div></div>
+      <select id="setInterval">
+        <option value="0">مقفول (يدوي)</option>
+        <option value="60000">كل دقيقة</option>
+        <option value="300000">كل ٥ دقايق</option>
+        <option value="900000">كل ١٥ دقيقة</option>
+        <option value="3600000">كل ساعة</option>
+      </select>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">آخر مزامنة</div><div class="ds">من آخر مرة اتجابت الداتا من السيرفر</div></div>
+      <span class="hint" id="lastSync2">—</span>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">حالة التطبيق (PWA)</div><div class="ds">لو «مثبّت» يبقى بيشتغل أوفلاين ويحدّث نفسه</div></div>
+      <span class="hint" id="swState">—</span>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">حجم اللقطة المحفوظة</div><div class="ds">البيانات الموجودة على جهازك (للاستخدام بدون نت)</div></div>
+      <span class="hint" id="storeState">—</span>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">تثبيت نسخة جديدة</div><div class="ds">بيفحص لو فيه نسخة أحدث من الكاش</div></div>
+      <button class="ghost sm" id="checkUpdBtn">فحص</button>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">تصدير كل الداتا</div><div class="ds">ملف JSON كامل (مستخدمين · خط زمني · أجهزة)</div></div>
+      <button class="ghost sm" id="exportAllBtn">تصدير</button>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">مسح اللقطة المحلية</div><div class="ds">يمسح الكاش ويجيب داتا جديدة فوراً</div></div>
+      <button class="ghost sm" id="clearCacheBtn">مسح</button>
+    </div>
+    <div class="set-row">
+      <div><div class="lb">خروج</div><div class="ds">يسجّل خروجك من التطبيق</div></div>
+      <button class="ghost sm" id="logoutBtn">خروج</button>
+    </div>
+    <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+      <div class="lb" style="font-size:13.5px;font-weight:800;margin-bottom:8px">🔧 وضع يدوي (احتياطي)</div>
+      <div class="hint" style="margin-bottom:8px">لو الـAPI واقع، الصق هنا ملف JSON محفوظ واستخدمه على طول.</div>
+      <textarea id="pasteBox" rows="2" placeholder='{"users":[…],"timeline":[…]}' style="width:100%;background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:9px 12px;font-family:ui-monospace,monospace;font-size:11px;resize:vertical"></textarea>
+      <button class="ghost sm" style="margin-top:8px" onclick="pasteGo()">تطبيق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ مساعدة التثبيت ═══ -->
+<div class="modal" id="installModal" onclick="if(event.target===this)document.getElementById('installModal').classList.remove('on')">
+  <div class="modal-in">
+    <div class="modal-hd">
+      <h3>📲 تثبيت التطبيق على جهازك</h3>
+      <button class="x" id="closeInstall">×</button>
+    </div>
+    <div style="font-size:13.5px;color:var(--dim);margin-bottom:14px;line-height:1.9">
+      بعد التثبيت بيبقى زي أي أپلكيشن: أيقونة على الشاشة، يفتح بملء الشاشة، وبيشتغل من غير نت.
+    </div>
+    <div class="lb" style="font-size:13px;font-weight:800;margin-bottom:6px">🤖 على أندرويد / تاب (Chrome / Edge)</div>
+    <ol class="steps">
+      <li>افتح الرابط في المتصفح</li>
+      <li>دوس على <b>⋮</b> أو <b>⋮⋮</b> فوق</li>
+      <li>اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b></li>
+      <li>أكّد التثبيت ✅</li>
+    </ol>
+    <div class="lb" style="font-size:13px;font-weight:800;margin:16px 0 6px">🍎 على آيفون / آيباد (Safari)</div>
+    <ol class="steps">
+      <li>افتح الرابط في <b>Safari</b></li>
+      <li>دوس على زر <b>المشاركة</b> (⬆️)</li>
+      <li>اختار <b>«إضافة إلى الشاشة الرئيسية»</b></li>
+      <li>أكّد ✅</li>
+    </ol>
+    <div class="lb" style="font-size:13px;font-weight:800;margin:16px 0 6px">💻 على كمبيوتر</div>
+    <ol class="steps">
+      <li>في Chrome: دوس على أيقونة <b>⊕</b> في شريط العنوان (يمين)</li>
+      <li>أو من <b>⋮ → تثبيت</b></li>
+    </ol>
+    <div class="hint" style="margin-top:12px">💡 بعد التثبيت: افتحه من أيقونته، وسجّل دخول مرة واحدة، والباقي كله أوتوماتيك.</div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<!-- ═══ شريط التنقل السفلي (تاب/موبايل) ═══ -->
+<nav id="nav">
+  <div class="inner">
+    <button onclick="document.querySelector('#kpis').scrollIntoView()"><span class="ic">📊</span>الملخص</button>
+    <button onclick="document.querySelector('#tUsers').scrollIntoView()"><span class="ic">👥</span>مين دخل</button>
+    <button onclick="document.querySelector('#tl').scrollIntoView()"><span class="ic">⏱</span>الخط الزمني</button>
+    <button onclick="document.querySelector('#tDev').scrollIntoView()"><span class="ic">📱</span>الأجهزة</button>
+    <button onclick="document.querySelector('#hchart').scrollIntoView()"><span class="ic">📈</span>السلوك</button>
+    <button onclick="document.querySelector('#fun').scrollIntoView()"><span class="ic">🎯</span>القمع</button>
+    <button onclick="document.querySelector('#gaps').scrollIntoView()"><span class="ic">🔧</span>الفجوات</button>
+    <button id="navRefresh" onclick="pull(false)"><span class="ic">🔄</span>تحديث</button>
+    <button id="navSettings" onclick="document.getElementById('settings').classList.add('on')"><span class="ic">⚙️</span>إعدادات</button>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+</body>
+</html>
